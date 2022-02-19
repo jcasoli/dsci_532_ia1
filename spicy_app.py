@@ -7,7 +7,7 @@ cars = data.cars()
 
 def plot_altair(xmax):
     chart = alt.Chart(cars[cars['Miles_per_Gallon'] < xmax]).mark_point().encode(
-        x='Horsepower',
+        x='Miles_per_Gallon',
         y='Weight_in_lbs')
     return chart.to_html()
 
