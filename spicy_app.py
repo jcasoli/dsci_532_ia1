@@ -6,7 +6,7 @@ from vega_datasets import data
 cars = data.cars()
 
 def plot_altair(xmax):
-    chart = alt.Chart(cars[cars['Horsepower'] < xmax]).mark_point().encode(
+    chart = alt.Chart(cars[cars['Miles_per_Gallon'] < xmax]).mark_point().encode(
         x='Horsepower',
         y='Weight_in_lbs')
     return chart.to_html()
@@ -19,7 +19,7 @@ app.layout = html.Div([
             id='scatter',
             srcDoc=plot_altair(xmax=0),
             style={'border-width': '0', 'width': '100%', 'height': '400px'}),
-        dcc.Slider(id='xslider', min=0, max=240)])
+        dcc.Slider(id='xslider', min=0, max=50)])
         
 @app.callback(
     Output('scatter', 'srcDoc'),
